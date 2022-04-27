@@ -5,7 +5,7 @@ while getopts "n:c:o:t:" opt; do
   case ${opt} in
     c )
       if [ -z "${OPTARG}" ]; then
-        echo "::error ::git-chlog path is not set using flag '-c <configuration directory>'"
+        echo "::error::git-chlog path is not set using flag '-c <configuration directory>'"
         exit 1
       fi
       config=$OPTARG
@@ -29,10 +29,10 @@ shift $((OPTIND -1))
 
 
 if [ -f "${config}/config.yml" ] && [ -f "${config}/CHANGELOG.tpl.md" ]; then
-  echo "::debug ::git-chlog: -c '${config}'"
-  echo "::debug ::git-chlog: -n '${next_tag}'"
-  echo "::debug ::git-chlog: -o '${output}'"
-  echo "::debug ::git-chlog: -t '${tag}'"
+  echo "::debug::git-chlog: -c '${config}'"
+  echo "::debug::git-chlog: -n '${next_tag}'"
+  echo "::debug::git-chlog: -o '${output}'"
+  echo "::debug::git-chlog: -t '${tag}'"
   echo "::info ::git-chlog executing command: /usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag}"
 
   changelog=$(/usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag})
