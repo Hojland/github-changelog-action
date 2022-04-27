@@ -33,15 +33,15 @@ if [ -f "${config}/config.yml" ] && [ -f "${config}/CHANGELOG.tpl.md" ]; then
   echo "::debug::git-chlog: -n '${next_tag}'"
   echo "::debug::git-chlog: -o '${output}'"
   echo "::debug::git-chlog: -t '${tag}'"
-  echo "::info ::git-chlog executing command: /usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag}"
-
+  echo "::info::git-chlog executing command: /usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag}"
+  git fetch --all --tags
   changelog=$(/usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag})
 
   echo "----------------------------------------------------------"
   echo "${changelog}"
   echo "----------------------------------------------------------"
 
-  echo "::debug ::git-chlog: -o '${output}'"
+  echo "::debug::git-chlog: -o '${output}'"
   if [[ ! -z "$output" ]]; then
     echo "::debug ::git-chlog -o options is set. writing changelog to ${output}"
     echo "${changelog}" > ${output}
