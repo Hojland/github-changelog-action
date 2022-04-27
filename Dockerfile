@@ -1,4 +1,4 @@
-FROM docker.io/alpine:latest
+FROM ubuntu:latest
 
 COPY entrypoint.sh /entrypoint.sh
 RUN apk add --no-cache git && \

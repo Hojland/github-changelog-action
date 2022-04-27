@@ -34,7 +34,6 @@ if [ -f "${config}/config.yml" ] && [ -f "${config}/CHANGELOG.tpl.md" ]; then
   echo "::debug::git-chlog: -o '${output}'"
   echo "::debug::git-chlog: -t '${tag}'"
   echo "::info::git-chlog executing command: /usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag}"
-  git fetch --all --tags
   changelog=$(/usr/local/bin/git-chglog --config "${config}/config.yml" ${next_tag} ${tag})
 
   echo "----------------------------------------------------------"
